@@ -17,10 +17,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     day!: Date;
 
     static associate(models: any) {
-      const userId =  Time.belongsTo(models.User, {
-        foreignKey: 'userId',
-        as: 'userTimeId'
-      });
+      
       const projectId =  Time.belongsTo(models.Project, {
         foreignKey: 'projectId',
         as: 'projectTimeId'
@@ -52,4 +49,5 @@ module.exports = (sequelize: any, DataTypes: any) => {
     modelName: 'Time',
     });
   return Time;
+  
 };

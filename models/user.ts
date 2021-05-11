@@ -1,4 +1,5 @@
 'use strict';
+const time = require('./time')
 import { Model, ModelStatic, UUIDV4 } from 'sequelize';
 
 interface UserAttributes {
@@ -22,10 +23,15 @@ module.exports = (sequelize: any, DataTypes: any) => {
         through: 'ProjectAssignments'
       });
 
-      User.hasMany(models.Times, {
+      User.hasMany(models.Time, {
         sourceKey: 'id',
         foreignKey: 'timeId',
         as: 'timeId'
+      });
+
+      const times =  time.belongsTo(models.User, {
+        foreignKey: 'userId',
+        as: 'userTimeId'
       });
     }
   };
