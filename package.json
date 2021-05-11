@@ -1,0 +1,29 @@
+{
+  "name": "TimeTracker3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsnd --respawn index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.11",
+    "@types/node": "^15.0.2",
+    "@types/uuid": "^8.3.0",
+    "sequelize-cli": "^6.2.0",
+    "ts-node": "^9.1.1",
+    "ts-node-dev": "^1.1.6",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "dotenv": "^9.0.1",
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.2",
+    "uuid": "^8.3.2"
+  }
+}
