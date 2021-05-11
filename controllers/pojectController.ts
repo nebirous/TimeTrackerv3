@@ -4,15 +4,14 @@ import db from "../models";
 
 export const getProjects = async(req: Request, res: Response) => {
 
-    const { idUser } = req.params;
 
-    const time = await db.Time.findByPk(idUser)
+    const project = await db.Project.findAll()
 
-    if(time){
-        res.json(time);
+    if(project){
+        res.json(project);
     } else {
         res.status(404).json({
-            msg: `Not Found user with id ${ idUser }`
+            msg: `Not Found projects in the DB`
         })
     }
 

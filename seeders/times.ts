@@ -1,22 +1,44 @@
 export const times = [
     {
-        projectId: 1,
-        userId: '1195478f-96bd-4e9a-87b8-c077b591f273'
+        startTime: '08:00',
+        endTime: '17:00',
+        day: '2021-05-11',
+        userId: 1
     },
     {
-        projectId: 3,
-        userId: '1195478f-96bd-4e9a-87b8-c077b591f273'
+        startTime: '09:00',
+        endTime: '17:40',
+        day: '2021-05-11',
+        userId: 2
     },
     {
-        projectId: 2,
-        userId: '2da3e018-ba90-4c69-b363-5c7bca4f40f7'
+        startTime: '08:50',
+        endTime: '16:30',
+        day: '2021-05-11',
+        userId: 3
     },
     {
-        projectId: 1,
-        userId: '2da3e018-ba90-4c69-b363-5c7bca4f40f7'
+        startTime: '09:00',
+        endTime: '18:00',
+        day: '2021-05-10',
+        userId: 1
     },
     {
-        projectId: 2,
-        userId: '80059aa4-aacc-4a1e-ba61-bd50476b8441'
+        startTime: '09:11',
+        endTime: '18:00',
+        day: '2021-05-10',
+        userId: 2
+    },
+    {
+        startTime: '09:44',
+        endTime: '13:12',
+        day: '2021-05-10',
+        userId: 3
+    },
+    {
+        startTime: '09:33',
+        endTime: '17:33',
+        day: '2021-05-09',
+        userId: 1
     }
 ]

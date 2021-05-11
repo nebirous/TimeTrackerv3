@@ -4,7 +4,8 @@ import { getProjects, getProject, postProject, putProject, deleteProject } from 
 
 const router = Router();
 
-router.get('/api/:idProject', getProjects);
+
+router.get('/api/', getProjects);
 router.get('/api/:id', getProject);
 router.post('/api/', postProject);
 router.put('/api/:id', putProject);

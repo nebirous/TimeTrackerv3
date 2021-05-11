@@ -21,6 +21,12 @@ module.exports = (sequelize: any, DataTypes: any) => {
       User.belongsToMany(models.Project, {
         through: 'ProjectAssignments'
       });
+
+      User.hasMany(models.Times, {
+        sourceKey: 'id',
+        foreignKey: 'timeId',
+        as: 'timeId'
+      });
     }
   };
   User.init({

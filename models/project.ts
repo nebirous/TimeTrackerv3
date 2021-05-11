@@ -21,6 +21,11 @@ module.exports = (sequelize: any, DataTypes: any) => {
       const project =  Project.belongsToMany(models.User, {
         through: 'ProjectAssignments'
       });
+      Project.hasMany(models.Times, {
+        sourceKey: 'id',
+        foreignKey: 'timeId',
+        as: 'projecTimeId'
+      });
     }
   };
   Project.init({

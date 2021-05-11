@@ -6,8 +6,6 @@ interface TimeAttributes {
     startTime: string;
     endTime: string;
     day: Date;
-    // userId: number;
-    // projectId: number;
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
@@ -19,7 +17,14 @@ module.exports = (sequelize: any, DataTypes: any) => {
     day!: Date;
 
     static associate(models: any) {
-      
+      const userId =  Time.belongsTo(models.User, {
+        foreignKey: 'userId',
+        as: 'userTimeId'
+      });
+      const projectId =  Time.belongsTo(models.Project, {
+        foreignKey: 'projectId',
+        as: 'projectTimeId'
+      });
     }
   };
   Time.init({
