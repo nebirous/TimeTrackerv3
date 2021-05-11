@@ -1,27 +1,35 @@
+import dotenv from "dotenv";
+import Server from "./config/server";
+import db from './models';
 import express from 'express';
-
 const app =  express();
 
-const port = process.env.PORT || 3000;
 
-import db from './models';
-import { users } from "./seeders/users";
-import { projects } from "./seeders/projects";
-import { projectAssignments } from "./seeders/projectAssignments";
+// Configuration
+dotenv.config();
 
-app.get('/', (req, res) => {
-    db.User.findAll({
-        include: {
-            model: db.Project
-        }
-    }).then((result: object) => res.json(result)).catch((err: object) => console.error(err));
-})
+const server = new Server();
+server.listen(); 
 
-db.sequelize.sync().then(() => {
-    app.listen(port, () => {
-        console.log(`App listening on port ${port}`) 
-    })
-})
+
+
+// import { users } from "./seeders/users";
+// import { projects } from "./seeders/projects";
+// import { projectAssignments } from "./seeders/projectAssignments";
+
+// app.get('/', (req, res) => {
+//     db.User.findAll({
+//         include: {
+//             model: db.Project
+//         }
+//     }).then((result: object) => res.json(result)).catch((err: object) => console.error(err));
+// })
+
+// db.sequelize.sync().then(() => {
+//     app.listen(port, () => {
+//         console.log(`App listening on port ${port}`) 
+//     })
+// })
 
 
 
