@@ -18,19 +18,23 @@ module.exports = (sequelize: any, DataTypes: any) => {
 
     static associate(models: any) {
       
-      const projectId =  Time.belongsTo(models.Project, {
+      this.belongsTo(models.Project, {
         foreignKey: 'projectId',
-        as: 'projectTimeId'
+        as: 'project'
+      });
+
+      this.belongsTo(models.User, {
+        foreignKey: 'userId',
+        as: 'user'
       });
     }
   };
   Time.init({
-    timeId: {
-        allowNull: false,
-        autoIncrement: false,
-        primaryKey: true,
+    timeId: { 
         type: DataTypes.INTEGER,
-        unique: true,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true
     },
     startTime: {
         allowNull: false,

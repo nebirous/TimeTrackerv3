@@ -1,5 +1,4 @@
 'use strict';
-const time = require('./time')
 import { Model, ModelStatic, UUIDV4 } from 'sequelize';
 
 interface UserAttributes {
@@ -19,19 +18,14 @@ module.exports = (sequelize: any, DataTypes: any) => {
 
     static associate(models: any) {
       // define association here
-      User.belongsToMany(models.Project, {
-        through: 'ProjectAssignments'
+      this.belongsToMany(models.Project, {
+        through: 'ProjectAssignments',
+        as: 'projects'
       });
 
-      User.hasMany(models.Time, {
-        sourceKey: 'id',
+      this.hasMany(models.Time, {
         foreignKey: 'timeId',
-        as: 'timeId'
-      });
-
-      const times =  time.belongsTo(models.User, {
-        foreignKey: 'userId',
-        as: 'userTimeId'
+        as: 'time'
       });
     }
   };

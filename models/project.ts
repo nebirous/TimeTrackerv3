@@ -18,13 +18,13 @@ module.exports = (sequelize: any, DataTypes: any) => {
 
     static associate (models: any) {
       // define association here
-      const project =  Project.belongsToMany(models.User, {
-        through: 'ProjectAssignments'
+      this.belongsToMany(models.User, {
+        through: 'ProjectAssignments',
+        as: 'projects'
       });
-      Project.hasMany(models.Times, {
-        sourceKey: 'id',
+      this.hasMany(models.Time, {
         foreignKey: 'timeId',
-        as: 'projecTimeId'
+        as: 'time'
       });
     }
   };

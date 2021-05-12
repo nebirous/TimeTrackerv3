@@ -1,22 +1,22 @@
 export const projectAssignments = [
     {
         projectId: 1,
-        userId: '1195478f-96bd-4e9a-87b8-c077b591f273'
+        userId: '60f0bccb-8a82-4e00-a286-296b2940192e'
     },
     {
         projectId: 3,
-        userId: '1195478f-96bd-4e9a-87b8-c077b591f273'
+        userId: '60f0bccb-8a82-4e00-a286-296b2940192e'
     },
     {
         projectId: 2,
-        userId: '2da3e018-ba90-4c69-b363-5c7bca4f40f7'
+        userId: '9951d7eb-875f-485b-a7e0-101c7e8c8331'
     },
     {
         projectId: 1,
-        userId: '2da3e018-ba90-4c69-b363-5c7bca4f40f7'
+        userId: '9951d7eb-875f-485b-a7e0-101c7e8c8331'
     },
     {
         projectId: 2,
-        userId: '80059aa4-aacc-4a1e-ba61-bd50476b8441'
+        userId: 'de926369-7cb7-4364-9132-7e675f8791b1'
     }
 ]

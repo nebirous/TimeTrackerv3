@@ -13,9 +13,10 @@ server.listen();
 
 
 
-// import { users } from "./seeders/users";
-// import { projects } from "./seeders/projects";
-// import { projectAssignments } from "./seeders/projectAssignments";
+import { users } from "./seeders/users";
+import { projects } from "./seeders/projects";
+import { projectAssignments } from "./seeders/projectAssignments";
+import { times } from "./seeders/times";
 
 
 // const createProjectAssignments = () => {
@@ -25,6 +26,14 @@ server.listen();
 // }
 
 // createProjectAssignments(); 
+
+// const createTimes = () => {
+//     times.map(time => {
+//         db.Time.create(time); 
+//     }) 
+// }
+
+// createTimes(); 
 
 // const createUsers = () => {
 //     users.map(user => {
