@@ -19,15 +19,15 @@ export const getProjects = async(req: Request, res: Response) => {
 
 export const getProject = async(req: Request, res: Response) => {
 
-    const { idUser } = req.params;
+    const { id } = req.params;
 
-    const time = await db.Time.findByPk(idUser)
+    const time = await db.Time.findByPk(id)
 
     if(time){
         res.json(time);
     } else {
         res.status(404).json({
-            msg: `Not Found user with id ${ idUser }`
+            msg: `Not Found project with id ${ id }`
         })
     }
 

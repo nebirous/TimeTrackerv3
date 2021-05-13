@@ -5,9 +5,9 @@ import { getUsers, getUser, postUser, putUser, deleteUser } from "../controllers
 
 const router = Router();
 
-router.get('/:idUser', getTimes);
-router.post('/', postTime);
-router.put('/:id', putTime);
-router.delete('/:id', deleteTime);
+router.get('/api/:id/', getTimes);
+router.post('/api/', postTime);
+router.put('/api/:id', putTime);
+router.delete('/api/:id', deleteTime);
 
 export default router;

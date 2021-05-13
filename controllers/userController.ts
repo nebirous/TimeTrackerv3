@@ -5,9 +5,13 @@ import db from "../models";
 export const getUsers = async(req: Request, res: Response) => {
 
     db.User.findAll({
-        include: {
-            model: db.Project
-        }
+        include: [{
+            model: db.Project,
+            as: "projects"
+        },{
+            model: db.Time,
+            as: "time"
+        }]
     }).then((result: object) => res.json(result)).catch((err: object) => console.error(err));
 
     // const users = await db.User.findAll();
@@ -20,7 +24,11 @@ export const getUser = async(req: Request, res: Response) => {
 
     const { id } = req.params;
 
-    const user = await db.User.findByPk(id)
+    // res.status(200).json({
+    //     msg: 'User is ' + userId
+    // })
+
+    const user = await db.User.findByPk(id);
 
     if(user){
         res.json(user);

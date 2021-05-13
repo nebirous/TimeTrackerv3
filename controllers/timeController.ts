@@ -1,19 +1,39 @@
 import { Request, Response } from "express";
+import sequelize from "sequelize";
+import { Op } from 'sequelize';
 import db from "../models";
 
 
 /** Gets times from a id user */
 export const getTimes = async(req: Request, res: Response) => {
 
-    const { idUser } = req.params;
+    const { id } = req.params;
+    const projectId = req.query.projectId;
+    const day = req.query.day?.toString();
 
-    const time = await db.Time.findByPk(idUser)
+    const dateTime = day?.concat("T00:00:00.000Z");
 
-    if(time){
-        res.json(time);
+    const whereClause: any = {};
+    console.log(dateTime);
+
+    if(dateTime){
+        whereClause.day= dateTime;
+    }
+    if(projectId){
+        whereClause.projectId = projectId;
+    }
+
+    const times = await db.Time.findAll({
+        where: whereClause
+    })
+
+    console.log(day);
+
+    if(times){
+        res.json(times);
     } else {
         res.status(404).json({
-            msg: `Not Found user with id ${ idUser }`
+            msg: `Not Found times for user with id ${ id }`
         })
     }
 
