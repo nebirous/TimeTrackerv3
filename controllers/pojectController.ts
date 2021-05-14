@@ -21,10 +21,10 @@ export const getProject = async(req: Request, res: Response) => {
 
     const { id } = req.params;
 
-    const time = await db.Time.findByPk(id)
+    const project = await db.Project.findByPk(id)
 
-    if(time){
-        res.json(time);
+    if(project){
+        res.json(project);
     } else {
         res.status(404).json({
             msg: `Not Found project with id ${ id }`
@@ -39,10 +39,10 @@ export const postProject = async(req: Request, res: Response) => {
 
     try{
         
-        const time = db.Time.build(body);
-        await time.save();
+        const project = db.Project.build(body);
+        await project.save();
 
-        res.json( time );
+        res.json( project );
 
     }catch (error) {
         res.status(500).json({
@@ -61,17 +61,17 @@ export const putProject = async(req: Request, res: Response) => {
 
     try{
 
-        const time = await db.Time.findByPk(id);
+        const project = await db.Project.findByPk(id);
 
-        if(!time){
+        if(!project){
             return res.status(404).json({
-                msg: 'There is no user with id ' + id
+                msg: 'There is no project with id ' + id
             });
         }
 
-        await time.update(body);
+        await project.update(body);
 
-        res.json( time );
+        res.json( project );
 
     }catch (error) {
         res.status(500).json({
@@ -86,15 +86,15 @@ export const deleteProject = async(req: Request, res: Response) => {
     const { id } = req.params;
 
     
-    const time = await db.Time.findByPk(id);
-    if(!time){
+    const project = await db.Project.findByPk(id);
+    if(!project){
         return res.status(404).json({
-            msg: 'Time not found with id' + id
+            msg: 'Project not found with id' + id
         });
     }
 
-    await time.update({status: false});    
+    await project.update({status: false});    
 
-    res.json(time)
+    res.json(project)
 
 }
