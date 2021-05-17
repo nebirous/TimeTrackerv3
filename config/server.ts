@@ -12,7 +12,7 @@ import db from '../models';
 
 class Server {
 
-    private app: express.Application;
+    public app: express.Application;
     private port: string;
     private apiPaths = {
         users: '/users',
@@ -37,6 +37,7 @@ class Server {
 
         //Define routes
         this.routes();
+
     }
     
     async dbConnection(){
@@ -75,6 +76,8 @@ class Server {
                 })
             })
     }
+
+    
 
 }
 

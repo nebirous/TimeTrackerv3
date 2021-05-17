@@ -31,11 +31,30 @@ export const getUser = async(req: Request, res: Response) => {
     const user = await db.User.findByPk(id);
 
     if(user){
-        res.json(user);
+        res.status(200).json(user);
     } else {
         res.status(404).json({
             msg: `Not Found user with id ${ id }`
         })
+    }
+
+}
+
+export const login = async(req: Request, res: Response) => {
+    const username = req.query.user;
+    const password = req.query.password;
+
+    const login = await db.User.findOne({
+        where: {
+            name: username,
+            password: password
+        }
+    })
+
+    if(login){
+        res.status(200).json(login)
+    }else{
+        res.status(404).json({msg: "Wrong user credentials"})
     }
 
 }
@@ -132,6 +151,6 @@ export const deleteUser = async(req: Request, res: Response) => {
 
 export const newUser = (req: Request, res: Response) => {
 
-    res.send('Form');
+    res.status(200).json({ msg: 'works!'})
 
 }

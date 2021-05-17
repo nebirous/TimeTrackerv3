@@ -11,6 +11,8 @@ dotenv.config();
 const server = new Server();
 server.listen();
 
+export default server;
+
 
 // import { users } from "./seeders/users";
 // import { projects } from "./seeders/projects";
