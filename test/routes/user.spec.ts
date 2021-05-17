@@ -47,6 +47,7 @@ it('GET - User login fail', () => {
 
     request(server.app)
         .get("/users/login")
+        .query({user: 'DavidSalguero', password:'1'})
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
         .expect(404)
