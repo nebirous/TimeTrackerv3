@@ -8,7 +8,7 @@ let server: Server;
 beforeAll(async () => {
 
     server = await new createServer()
-    await server.listen();
+    server.listen();
 })
 
 describe('User test', () => {
@@ -46,15 +46,16 @@ describe('User test', () => {
     
     });
     
-    it('GET - User login fail', () => {
+    it('GET - User login fail', async() => {
     
     
-        request(server.app)
+        const response = await request(server.app)
             .get("/users/login")
             .query({user: 'DavidSalguero', password:'1'})
-            .set('Accept', 'application/json')
-            .expect('Content-Type', /json/)
-            .expect(404)
+            .set('Accept', 'application/json');
+        
+        expect(response.status).toEqual(404);
+        expect(response.body.msg).toEqual("Wrong user credentials");
     
     });
 })
