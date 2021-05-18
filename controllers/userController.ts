@@ -24,10 +24,6 @@ export const getUser = async(req: Request, res: Response) => {
 
     const { id } = req.params;
 
-    // res.status(200).json({
-    //     msg: 'User is ' + userId
-    // })
-
     const user = await db.User.findByPk(id);
 
     if(user){
@@ -62,6 +58,7 @@ export const login = async(req: Request, res: Response) => {
 export const postUser = async(req: Request, res: Response) => {
 
     const { body } = req;
+    console.log(body);
 
     try{
 
@@ -76,16 +73,19 @@ export const postUser = async(req: Request, res: Response) => {
                 msg: 'User already exists with email' + body.email
             });
         }
-
+        console.log(existeMail);
+        console.log("Body: "+body);
 
         const user = db.User.build(body);
+
         await user.save();
 
         res.json( user );
 
     }catch (error) {
         res.status(500).json({
-            msg: 'Error. Talk to administrator'
+            msg: 'Error. Talk to administrator',
+            error
         })
     };
     
@@ -143,7 +143,11 @@ export const deleteUser = async(req: Request, res: Response) => {
         });
     }
 
-    await user.update({status: false});    
+    await user.destroy({
+        where: {
+            id: id
+        }
+    });    
 
     res.json(user)
 

@@ -1,6 +1,7 @@
 import request from "supertest";
 import createServer from '../../config/server';
 import Server from '../../config/server';
+const nock = require('nock');
 
 let server: Server;
 
@@ -10,46 +11,52 @@ beforeAll(async () => {
     await server.listen();
 })
 
-it('GET - User first test', () => {
+describe('User test', () => {
 
-    request(server.app)
-        .get("/users/new")
-        .set('Accept', 'application/json')
-        .expect('Content-Type', /json/)
-        .expect(200)
+    it('GET - User first test', () => {
 
-});
-
-it('GET - Users service', () => {
-
-    request(server.app)
-        .get("/users/api")
-        .set('Accept', 'application/json')
-        .expect('Content-Type', /json/)
-        .expect(200)
-
-});
-
-it('GET - User login', () => {
+        request(server.app)
+            .get("/users/new")
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200)
 
 
-    request(server.app)
-        .get("/users/login")
-        .query({user: 'DavidSalguero', password:'12345'})
-        .set('Accept', 'application/json')
-        .expect('Content-Type', /json/)
-        .expect(200)
+    });
 
-});
+    it('GET - Users service', () => {
 
-it('GET - User login fail', () => {
+        request(server.app)
+            .get("/users/api")
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200)
+    
+    });
+    
+    it('GET - User login', () => {
+    
+    
+        request(server.app)
+            .get("/users/login")
+            .query({user: 'DavidSalguero', password:'12345'})
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200)
+    
+    });
+    
+    it('GET - User login fail', () => {
+    
+    
+        request(server.app)
+            .get("/users/login")
+            .query({user: 'DavidSalguero', password:'1'})
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(404)
+    
+    });
+})
 
 
-    request(server.app)
-        .get("/users/login")
-        .query({user: 'DavidSalguero', password:'1'})
-        .set('Accept', 'application/json')
-        .expect('Content-Type', /json/)
-        .expect(404)
-
-});
